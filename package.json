@@ -1,0 +1,16 @@
+{
+  "name": "seed2pk",
+  "version": "1.0.0",
+  "description": "Convert a seed into a Tron address.",
+  "main": "mneumonic.js",
+  "repository": "https://github.com/eulen-repo/tron_seed2pk",
+  "author": "Eulen",
+  "license": "BSD",
+  "private": false,
+  "dependencies": {
+    "bip32": "^4.0.0",
+    "bip39": "^3.1.0",
+    "tiny-secp256k1": "^2.2.3",
+    "tronweb": "^5.3.1"
+  }
+}
