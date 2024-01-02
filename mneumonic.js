@@ -72,13 +72,21 @@ async function getMnemonic() {
 
     rl.close();
 
-    let mnemonic = '';
-    for (let i = 1; i <= wordCount; i++) {
-        const word = await getValidWord(`Enter word ${i}: `, validWords);
-        mnemonic += word + ' ';
-    }
+    let mnemonic;
+    do {
+        mnemonic = '';
+        for (let i = 1; i <= wordCount; i++) {
+            const word = await getValidWord(`Enter word ${i}: `, validWords);
+            mnemonic += word + ' ';
+        }
+        mnemonic = mnemonic.trim();
 
-    return mnemonic.trim();
+        if (!bip39.validateMnemonic(mnemonic)) {
+            console.log('Invalid mnemonic. Checksum failed. Please try again.');
+        }
+    } while (!bip39.validateMnemonic(mnemonic));
+
+    return mnemonic;
 }
 
 function getAccountAtIndex(mnemonic, index) {
